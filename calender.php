@@ -42,7 +42,7 @@ if(!empty($_GET['year']) && !empty($_GET['month'])){
   $Month=$_GET['month'];
 }else{
   $Year=date('Y');
-  $Month=date('m')
+  $Month=date('m');
 }
 ?>
 

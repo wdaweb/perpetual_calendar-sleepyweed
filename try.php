@@ -22,11 +22,11 @@
 <body class="p-5">
 <?php
 if(!empty($_GET['year']) && !empty($_GET['month'])){
-  echo $Year=$_GET['year'];
-  echo $Month=$_GET['month'];
+    $Year=$_GET['year'];
+    $Month=$_GET['month'];
 }else{
-  echo $Year=date('Y');
-  echo $Month=date('m');
+    $Year=date('Y');
+    $Month=date('m');
 }
 ?>
 <?php
@@ -65,8 +65,8 @@ if(($Month+1)<=12){
   <td>Sat</td>
 </tr>
 <?php
-$Year=date('Y');
-$Month=date('m');//①這個月
+// $Year=date('Y');
+// $Month=date('m');//①這個月
 $Day=date('d');
 $YMD=date('Y-m-d');
 $Week=date('D');//e.g.Mon
@@ -79,13 +79,13 @@ $Weeks=(($Days+$FirstWeek-7)/7)+1;//這個月有幾週
 <?php
 for($i=0;$i<$Weeks;$i++){
   echo "<tr>";
-  for($j=0;$j<7;$j++){
+  for($j=1;$j<8;$j++){
     echo "<td>";
     if($i==0 && $j<$FirstWeek)
       echo "&nbsp;";
-    else if(($i*7)+($j+1)-$FirstWeek>$Days){
+    else if(($i*7)+$j-$FirstWeek>$Days){
     }else{
-      echo (($i*7)+($j+1)-$FirstWeek);
+      echo (($i*7)+$j-$FirstWeek);
     }
     echo "</td>";
   }echo "</tr>";
