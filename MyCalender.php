@@ -71,9 +71,9 @@ $Day=date('d');
 $YMD=date('Y-m-d');
 $Week=date('D');//e.g.Mon
 
-$Days=date('t');//②這個月有幾天
-$FirstWeek=date('w',strtotime(date("$Year-$Month-01")));//③第一天星期幾
-$LastWeek=date('w',strtotime(date("$Year-$Month-$Days")));//④最後一天星期幾
+$Days=date('t',strtotime("$Year-$Month-01"));//②這個月有幾天
+$FirstWeek=date('w',strtotime("$Year-$Month-01"));//③第一天星期幾
+// $LastWeek=date('w',strtotime(date("$Year-$Month-$Days")));//④最後一天星期幾
 $Weeks=(($Days+$FirstWeek-7)/7)+1;//這個月有幾週
 ?>
 <?php
