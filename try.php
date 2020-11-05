@@ -79,13 +79,13 @@ $Weeks=(($Days+$FirstWeek-7)/7)+1;//這個月有幾週
 <?php
 for($i=0;$i<$Weeks;$i++){
   echo "<tr>";
-  for($j=1;$j<8;$j++){
+  for($j=0;$j<7;$j++){
     echo "<td>";
     if($i==0 && $j<$FirstWeek)
       echo "&nbsp;";
-    else if(($i*7)+$j-$FirstWeek>$Days){
+    else if(($i*7)+($j+1)-$FirstWeek>$Days){
     }else{
-      echo (($i*7)+$j-$FirstWeek);
+      echo (($i*7)+($j+1)-$FirstWeek);
     }
     echo "</td>";
   }echo "</tr>";
