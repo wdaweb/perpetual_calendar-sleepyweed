@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script> -->
   <script src="https://kit.fontawesome.com/97604f290f.js" crossorigin="anonymous"></script>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
@@ -22,7 +22,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
   }
   .title{
     font-family:'Fredericka the Great', cursive;
@@ -31,7 +30,7 @@
   }
   .left,.right{
     display:inline-block;
-    animation: button 4s linear infinite ;
+    animation: button 4s linear infinite;
   }
   @keyframes button{
     0%,100%{
@@ -63,14 +62,16 @@
     text-align:center;
     padding:10px 0;
   }
+  table td:empty{
+    visibility:hidden;
+  }
   .s2:hover{
     background:url('https://i.imgur.com/wzpvL9l.png')no-repeat;
     background-size:60%;
     background-position:center bottom;
   }
-  .s1{
+  .week{
     color:rgb(254,125,182);
-    font-size:38px;
   }
   a:link{
     color:#eee;
@@ -87,11 +88,41 @@
   a:active{
     color:#eee;
   }
+  .astronaut{
+    position:absolute;
+    top:0%;
+    left:0%;
+    animation: astronaut 4s ease-in-out infinite;
+  }
+  @keyframes astronaut{
+    0%{
+      transform:translateY(0px);
+    }
+    50%{
+      transform:translateY(100px);
+    }
+    100%{
+      transform:translateY(0px);
+    }
+  }
+  .ufo{
+    position:absolute;
+    bottom:5%;
+    right:5%;
+    /* content: "transition"; */
+    transform: translate(0,0);
+    transform-origin: left bottom;
+    transition:all 2s ease;
+  }
+  .ufo:hover{
+    transform:translate(-200px,-400px);
+  }
   </style>
 </head>
 
 
 <body>
+<div class="astronaut"><img src="https://i.imgur.com/0Vcl0hq.png" alt="astronaut" width="350px"></div>
 <div>
 <?php
 if(!empty($_GET['year']) && !empty($_GET['month'])){
@@ -139,7 +170,7 @@ if(($Month+1)<=12){
 }
 ?>
 <table>
-<tr class="s1">
+<tr class="week">
   <td>Sun</td>
   <td>Mon</td>
   <td>Tue</td>
@@ -166,5 +197,6 @@ for($i=0;$i<$Weeks;$i++){
 ?>
 </table>
 </div>
+<div class="ufo"><img src="https://i.imgur.com/ym1P3Su.png" alt="ufo" width="250px"></div>
 </body>
 </html>
