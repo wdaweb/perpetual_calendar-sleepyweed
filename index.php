@@ -15,8 +15,7 @@
     font-size:36px;
     color:#eee;
     background: url('https://i.imgur.com/hy1Kv6g.jpg') no-repeat;
-    background-size:100%;
-
+    background-size:cover;  /*瀏灠器改變大小時，讓背景圖盡可能等比例放大到滿版 */
     margin: 50px;
     padding: 50px;
     display: flex;
@@ -27,6 +26,7 @@
     font-family:'Fredericka the Great', cursive;
     font-size:78px;
     display:inline-block;
+    padding-left:100px;
   }
   .left,.right{
     display:inline-block;
@@ -47,7 +47,7 @@
     }
 }
 
-  .left{
+/*   .left{
     position:absolute;
     top:50%;
     left:10%;
@@ -56,7 +56,7 @@
     position:absolute;
     top:50%;
     right:10%;
-  }
+  } */
   table td{
     width:80px;
     text-align:center;
@@ -117,6 +117,18 @@
   .ufo:hover{
     transform:translate(-200px,-400px);
   }
+
+  /**
+  *cal-box用來裝左右切換及月曆三個元素
+  *利用justify-content:space-between來做中間留白的控制，讓左右按鈕自動靠左及靠右
+  *利用align-items:center讓按鈕可以自動垂直置中
+  */
+  .cal-box{
+    min-width:750px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
   </style>
 </head>
 
@@ -146,6 +158,7 @@ $FirstWeek=date('w',strtotime("$Year-$Month-01"));//③第一天星期幾
 $Weeks=(($Days+$FirstWeek-7)/7)+1;//這個月有幾週
 ?>
 <div class="title"><?=$Year;?>&nbsp;<?=$MonthTitle;?></div>
+<div class="cal-box">
 <?php
 if(($Month-1)>0){
 ?>
@@ -154,18 +167,6 @@ if(($Month-1)>0){
 }else{
 ?>
   <div class="left"><a href="?year=<?=($Year-1);?>&month=<?=12;?>"><i class="fas fa-caret-left"></i></a></div>
-<?php
-}
-?>
-
-<?php
-if(($Month+1)<=12){
-?>
-  <div class="right"><a href="?year=<?=$Year;?>&month=<?=($Month+1);?>"><i class="fas fa-caret-right"></i></a></div>
-<?php
-}else{
-?>
-  <div class="right"><a href="?year=<?=($Year+1);?>&month=<?=1;?>"><i class="fas fa-caret-right"></i></a></div>
 <?php
 }
 ?>
@@ -196,6 +197,18 @@ for($i=0;$i<$Weeks;$i++){
 }
 ?>
 </table>
+<?php
+if(($Month+1)<=12){
+?>
+  <div class="right"><a href="?year=<?=$Year;?>&month=<?=($Month+1);?>"><i class="fas fa-caret-right"></i></a></div>
+<?php
+}else{
+?>
+  <div class="right"><a href="?year=<?=($Year+1);?>&month=<?=1;?>"><i class="fas fa-caret-right"></i></a></div>
+<?php
+}
+?>
+</div>
 </div>
 <div class="ufo"><img src="https://i.imgur.com/ym1P3Su.png" alt="ufo" width="250px"></div>
 </body>
